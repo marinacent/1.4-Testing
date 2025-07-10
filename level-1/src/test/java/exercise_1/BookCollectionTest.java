@@ -29,7 +29,7 @@ public class BookCollectionTest {
 
         bookCollection.addBook(bookTitle);
 
-        assertEquals(1, (bookCollection.size()));
+        assertEquals(expectedSize, (bookCollection.size()));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class BookCollectionTest {
 
         bookCollection.addBook(bookTitle, 0);
 
-        assertEquals(1, (bookCollection.size()));
+        assertEquals(expectedSize, (bookCollection.size()));
     }
 
     @Test

@@ -4,6 +4,7 @@ import java.util.*;
 
 public class BookCollection {
     private final List<Book> bookList;
+    private final Set<Book> bookSet = new HashSet<>();
 
     public BookCollection() {
         this.bookList = new ArrayList<Book>();
@@ -11,15 +12,17 @@ public class BookCollection {
 
     public void addBook(String bookTitle) {
         Book book = new Book(bookTitle);
-        if (!bookList.contains(book)) {
+        if (!bookSet.contains(book)) {
             bookList.add(book);
+            bookSet.add(book);
         }
     }
 
     public void addBook(String bookTitle, int index) {
         Book book = new Book(bookTitle);
-        if (!bookList.contains(book)) {
+        if (!bookSet.contains(book)) {
             bookList.add(index, book);
+            bookSet.add(book);
         }
     }
 
@@ -35,7 +38,10 @@ public class BookCollection {
     }
 
     public void removeBook(String bookTitle) {
-        bookList.remove(new Book(bookTitle));
+        Book book = new Book(bookTitle);
+        if (bookSet.remove(book)) {
+            bookList.remove(book);
+        }
     }
 
     public void sortBooks() {
