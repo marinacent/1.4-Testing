@@ -9,4 +9,8 @@ public class BookCollection {
     public BookCollection() {
         this.bookCollection = new ArrayList<Book>();
     }
+
+    public void addBook(Book book) {
+        this.bookCollection.add(book);
+    }
 }
