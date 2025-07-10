@@ -18,4 +18,9 @@ public class BookCollectionManager {
     public void addBook(Book book) {
         this.bookCollection.add(book);
     }
+
+    public String getBookTitle(int index) {
+        Book book = this.bookCollection.get(index);
+        return book.getTitle();
+    }
 }
