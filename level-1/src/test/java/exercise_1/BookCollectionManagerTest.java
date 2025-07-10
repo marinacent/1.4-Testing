@@ -23,7 +23,7 @@ public class BookCollectionManagerTest {
     }
 
     @Test
-    public void addBookTest() {
+    public void addBook_withoutIndex() {
         String[] bookTitles = {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
         for (String title : bookTitles) {
             bookCollectionManager.addBook(new Book(title));

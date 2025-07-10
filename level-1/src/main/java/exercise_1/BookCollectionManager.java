@@ -1,7 +1,6 @@
 package exercise_1;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BookCollectionManager {
@@ -19,8 +18,16 @@ public class BookCollectionManager {
         this.bookCollection.add(book);
     }
 
+    public void addBook(Book book, int index) {
+        this.bookCollection.add(index, book);
+    }
+
     public String getBookTitle(int index) {
         Book book = this.bookCollection.get(index);
         return book.getTitle();
+    }
+
+    public void removeBook(String bookTitle) {
+        int bookIndex = this.bookCollection.indexOf()
     }
 }
