@@ -17,7 +17,6 @@ public class BookCollection {
         Book book = new Book(bookTitle);
         if (!bookList.contains(book)) {
             bookList.add(book);
-            bookList.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
         }
     }
 
@@ -25,7 +24,6 @@ public class BookCollection {
         Book book = new Book(bookTitle);
         if (!bookList.contains(book)) {
             bookList.add(index, book);
-            bookList.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
         }
     }
 
@@ -42,5 +40,9 @@ public class BookCollection {
 
     public void removeBook(String bookTitle) {
         bookList.remove(new Book(bookTitle));
+    }
+
+    public void sortBooks() {
+        bookList.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
     }
 }

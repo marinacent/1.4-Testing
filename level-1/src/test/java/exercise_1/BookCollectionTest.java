@@ -87,6 +87,7 @@ public class BookCollectionTest {
     public void bookCollection_isSorted_afterAddingBook() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitle);
+        bookCollection.sortBooks();
 
         int titleComparison = 1;
         for (int i = 1; i < bookList.size() && titleComparison > 0; i++) {
@@ -103,6 +104,7 @@ public class BookCollectionTest {
         String bookToRemove = "Macbeth";
         bookCollection.addBooks(bookTitles);
         bookCollection.removeBook(bookToRemove);
+        bookCollection.sortBooks();
 
         int titleComparison = 1;
         for (int i = 1; i < bookList.size() && titleComparison > 0; i++) {
