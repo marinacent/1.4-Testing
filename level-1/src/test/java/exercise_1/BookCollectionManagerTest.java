@@ -70,7 +70,10 @@ public class BookCollectionManagerTest {
 
     @Test
     public void getBookTitle_returnsCorrectTitle_GivenIndex() {
+        int index = 2;
+        String bookTitle = populatedBookCollectionManager.getBookTitle(index);
 
+        assertEquals(bookTitles[index], bookTitle);
 
     }
 
