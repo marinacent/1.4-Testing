@@ -25,12 +25,21 @@ public class BookCollectionManagerTest {
 
     @Test
     public void addBook_correctSize_withoutIndex() {
-        for (String title : bookTitles) {
-            bookCollectionManager.addBook(title);
-        }
+        String bookTitle = "Hamlet";
+        int expectedSize = 1;
+
+        bookCollectionManager.addBook(bookTitle);
         List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
-        assertEquals(bookTitles.length, (bookCollection.size()));
+        assertEquals(1, (bookCollection.size()));
+    }
+
+    @Test
+    public void addBooks_correctSize() {
+        bookCollectionManager.addBooks(bookTitles);
+        List<Book> bookCollection = bookCollectionManager.getBookCollection();
+
+        assertEquals(bookTitles.length, bookCollection.size());
     }
 
     @Test
@@ -38,13 +47,17 @@ public class BookCollectionManagerTest {
         String bookTitle = "Hamlet";
         int index = 2;
 
-        for (String title : bookTitles) {
-            bookCollectionManager.addBook(title);
-        }
+        bookCollectionManager.addBooks(bookTitles);
         bookCollectionManager.addBook(bookTitle, index);
         List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
         assertEquals(index, bookCollection.indexOf(new Book(bookTitle)));
+    }
+
+
+    @Test
+    public void addBook_duplicatesNotAllowed() {
+
     }
 
 }
