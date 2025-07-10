@@ -14,11 +14,13 @@ public class BookCollectionManager {
         return bookCollection;
     }
 
-    public void addBook(Book book) {
+    public void addBook(String bookTitle) {
+        Book book = new Book(bookTitle);
         bookCollection.add(book);
     }
 
-    public void addBook(Book book, int index) {
+    public void addBook(String bookTitle, int index) {
+        Book book = new Book(bookTitle);
         bookCollection.add(index, book);
     }
 

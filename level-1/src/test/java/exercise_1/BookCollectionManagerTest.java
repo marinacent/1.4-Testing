@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class BookCollectionManagerTest {
 
     private BookCollectionManager bookCollectionManager;
+    private final String[] bookTitles = new String[] {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
 
     @BeforeEach
     void setUp() {
@@ -18,19 +19,32 @@ public class BookCollectionManagerTest {
     }
 
     @Test
-    public void BookCollectionTest() {
+    public void BookCollection_NotNull_AfterInstantiation() {
         assertNotNull(bookCollectionManager);
     }
 
     @Test
-    public void addBook_withoutIndex() {
-        String[] bookTitles = {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
+    public void addBook_correctSize_withoutIndex() {
         for (String title : bookTitles) {
-            bookCollectionManager.addBook(new Book(title));
+            bookCollectionManager.addBook(title);
         }
         List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
-        assertEquals((bookCollection.size()), bookTitles.length);
+        assertEquals(bookTitles.length, (bookCollection.size()));
+    }
+
+    @Test
+    public void addBook_correctIndex() {
+        String bookTitle = "Hamlet";
+        int index = 2;
+
+        for (String title : bookTitles) {
+            bookCollectionManager.addBook(title);
+        }
+        bookCollectionManager.addBook(bookTitle, index);
+        List<Book> bookCollection = bookCollectionManager.getBookCollection();
+
+        assertEquals(index, bookCollection.indexOf(new Book(bookTitle)));
     }
 
 }
