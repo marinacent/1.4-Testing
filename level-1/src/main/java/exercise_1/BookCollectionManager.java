@@ -1,13 +1,18 @@
 package exercise_1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class BookCollection {
+public class BookCollectionManager {
     private final List<Book> bookCollection;
 
-    public BookCollection() {
+    public BookCollectionManager() {
         this.bookCollection = new ArrayList<Book>();
+    }
+
+    public List<Book> getBookCollection() {
+        return bookCollection;
     }
 
     public void addBook(Book book) {
