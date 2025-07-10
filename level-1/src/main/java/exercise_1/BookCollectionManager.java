@@ -15,19 +15,19 @@ public class BookCollectionManager {
     }
 
     public void addBook(Book book) {
-        this.bookCollection.add(book);
+        bookCollection.add(book);
     }
 
     public void addBook(Book book, int index) {
-        this.bookCollection.add(index, book);
+        bookCollection.add(index, book);
     }
 
     public String getBookTitle(int index) {
-        Book book = this.bookCollection.get(index);
+        Book book = bookCollection.get(index);
         return book.getTitle();
     }
 
     public void removeBook(String bookTitle) {
-        int bookIndex = this.bookCollection.indexOf()
+        bookCollection.remove(new Book(bookTitle));
     }
 }
