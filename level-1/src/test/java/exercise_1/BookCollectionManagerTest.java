@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BookCollectionManagerTest {
 
@@ -91,12 +90,27 @@ public class BookCollectionManagerTest {
         populatedBookCollectionManager.addBook(bookTitle);
 
         int titleComparison = 1;
-        for (int i = 1; i < populatedBookCollection.size() && titleComparison == 1; i++) {
+        for (int i = 1; i < populatedBookCollection.size() && titleComparison > 0; i++) {
             titleComparison = populatedBookCollection.get(i).getTitle().compareTo(
                     populatedBookCollection.get(i - 1).getTitle());
         }
 
-        assertEquals(1, titleComparison);
+        assertTrue(titleComparison > 0);
+
+    }
+
+    @Test
+    public void bookCollection_isSorted_afterRemovingBook() {
+        String bookToRemove = "Macbeth";
+        populatedBookCollectionManager.removeBook(bookToRemove);
+
+        int titleComparison = 1;
+        for (int i = 1; i < populatedBookCollection.size() && titleComparison > 0; i++) {
+            titleComparison = populatedBookCollection.get(i).getTitle().compareTo(
+                    populatedBookCollection.get(i - 1).getTitle());
+        }
+
+        assertTrue(titleComparison > 0);
 
     }
 
