@@ -14,8 +14,8 @@ public class BookCollectionManagerTest {
     private List<Book> bookCollection;
     private BookCollectionManager populatedBookCollectionManager;
     private List<Book> populatedBookCollection;
-    private final String[] bookTitles = new String[] {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
-
+    private final String[] bookTitles = new String[]{"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
+    private final String bookTitle = "A first book on an alphabetical list";
 
     @BeforeEach
     void setUp() {
@@ -35,7 +35,6 @@ public class BookCollectionManagerTest {
 
     @Test
     public void addBook_correctSize_withoutIndex() {
-        String bookTitle = "Hamlet";
         int expectedSize = 1;
 
         bookCollectionManager.addBook(bookTitle);
@@ -52,8 +51,7 @@ public class BookCollectionManagerTest {
 
     @Test
     public void addBook_correctIndex() {
-        String bookTitle = "Hamlet";
-        int index = 2;
+        int index = 0;
 
         populatedBookCollectionManager.addBook(bookTitle, index);
 
@@ -70,19 +68,36 @@ public class BookCollectionManagerTest {
 
     @Test
     public void getBookTitle_returnsCorrectTitle_GivenIndex() {
-        int index = 2;
-        String bookTitle = populatedBookCollectionManager.getBookTitle(index);
+        int index = 0;
 
-        assertEquals(bookTitles[index], bookTitle);
+        populatedBookCollectionManager.addBook(bookTitle);
+        String returnedTitle = populatedBookCollectionManager.getBookTitle(index);
+
+        assertEquals(bookTitle, returnedTitle);
 
     }
 
     @Test
     public void removeBook_reducesListSize() {
         String bookToRemove = "Macbeth";
+
         populatedBookCollectionManager.removeBook(bookToRemove);
 
-        assertEquals(bookTitles.length -1, populatedBookCollection.size());
+        assertEquals(bookTitles.length - 1, populatedBookCollection.size());
+    }
+
+    @Test
+    public void bookCollection_isSorted_afterAddingBook() {
+        populatedBookCollectionManager.addBook(bookTitle);
+
+        int titleComparison = 1;
+        for (int i = 1; i < populatedBookCollection.size() && titleComparison == 1; i++) {
+            titleComparison = populatedBookCollection.get(i).getTitle().compareTo(
+                    populatedBookCollection.get(i - 1).getTitle());
+        }
+
+        assertEquals(1, titleComparison);
+
     }
 
 }

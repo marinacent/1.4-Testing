@@ -1,9 +1,6 @@
 package exercise_1;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class BookCollectionManager {
     private final List<Book> bookCollection;
@@ -20,6 +17,7 @@ public class BookCollectionManager {
         Book book = new Book(bookTitle);
         if (!bookCollection.contains(book)) {
             bookCollection.add(book);
+            bookCollection.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
         }
     }
 
@@ -27,6 +25,7 @@ public class BookCollectionManager {
         Book book = new Book(bookTitle);
         if (!bookCollection.contains(book)) {
             bookCollection.add(index, book);
+            bookCollection.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
         }
     }
 
