@@ -77,4 +77,12 @@ public class BookCollectionManagerTest {
 
     }
 
+    @Test
+    public void removeBook_reducesListSize() {
+        String bookToRemove = "Macbeth";
+        populatedBookCollectionManager.removeBook(bookToRemove);
+
+        assertEquals(bookTitles.length -1, populatedBookCollection.size());
+    }
+
 }
