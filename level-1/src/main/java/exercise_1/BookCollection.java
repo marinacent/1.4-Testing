@@ -9,10 +9,6 @@ public class BookCollection {
         this.bookList = new ArrayList<Book>();
     }
 
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
     public void addBook(String bookTitle) {
         Book book = new Book(bookTitle);
         if (!bookList.contains(book)) {
@@ -44,5 +40,21 @@ public class BookCollection {
 
     public void sortBooks() {
         bookList.sort(Comparator.comparing(Book::getTitle, String.CASE_INSENSITIVE_ORDER));
+    }
+
+    public int size() {
+        return bookList.size();
+    }
+
+    public boolean containsBook(String title) {
+        return bookList.contains(new Book(title));
+    }
+
+    public int indexOf(String title) {
+        return bookList.indexOf(new Book(title));
+    }
+
+    public Book get(int index) {
+        return bookList.get(index);
     }
 }

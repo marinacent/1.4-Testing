@@ -10,109 +10,132 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BookCollectionTest {
 
     private BookCollection bookCollection;
-    private List<Book> bookList;
     private final String[] bookTitles = new String[]{"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
     private final String bookTitle = "A first book on an alphabetical list";
 
     @BeforeEach
     void setUp() {
         bookCollection = new BookCollection();
-        bookList = bookCollection.getBookList();
-
     }
 
     @Test
-    public void BookCollection_NotNull_AfterInstantiation() {
+    public void when_instantiated_then_bookCollectionIsNotNull() {
         assertNotNull(bookCollection);
     }
 
     @Test
-    public void addBook_correctSize_withoutIndex() {
+    public void when_addBookWithoutIndex_then_sizeIncreasesByOne() {
         int expectedSize = 1;
 
         bookCollection.addBook(bookTitle);
 
-        assertEquals(1, (bookList.size()));
+        assertEquals(1, (bookCollection.size()));
     }
 
     @Test
-    public void addBooks_correctSize() {
+    public void when_addBookWithIndex_then_sizeIncreasesByOne() {
+        int expectedSize = 1;
+
+        bookCollection.addBook(bookTitle, 0);
+
+        assertEquals(1, (bookCollection.size()));
+    }
+
+    @Test
+    public void when_addBooksArray_then_sizeIncreaseMatchesArrayLength() {
         bookCollection.addBooks(bookTitles);
 
-        assertEquals(bookTitles.length, bookList.size());
+        assertEquals(bookTitles.length, bookCollection.size());
     }
 
     @Test
-    public void addBook_correctIndex() {
+    public void when_addBookWithoutIndex_then_bookIsInList() {
+        bookCollection.addBook(bookTitle);
+        assertTrue(bookCollection.containsBook(bookTitle));
+    }
+
+    @Test
+    public void when_addBookWithIndex_then_bookIsInList() {
+        bookCollection.addBooks(bookTitles);
+        bookCollection.addBook(bookTitle, 2);
+        assertTrue(bookCollection.containsBook(bookTitle));
+    }
+
+    @Test
+    public void when_addBooksArray_then_eachBookIsInList() {
+        bookCollection.addBooks(bookTitles);
+        for (String title : bookTitles) {
+            assertTrue(bookCollection.containsBook(title));
+        }
+    }
+
+    @Test
+    public void when_addBookWithIndex_then_bookIsInsertedAtCorrectPosition() {
         int index = 0;
 
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitle, index);
 
-        assertEquals(index, bookList.indexOf(new Book(bookTitle)));
+        assertEquals(index, bookCollection.indexOf(bookTitle));
     }
 
 
     @Test
-    public void addBook_duplicatesNotAllowed() {
+    public void when_addDuplicateBook_then_duplicateIsNotAdded() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitles[1]);
 
-        assertEquals(bookTitles.length, bookList.size());
+        assertEquals(bookTitles.length, bookCollection.size());
     }
 
     @Test
-    public void getBookTitle_returnsCorrectTitle_GivenIndex() {
+    public void when_getBookTitleByIndex_then_correctTitleIsReturned() {
         int index = 0;
 
         bookCollection.addBooks(bookTitles);
-        bookCollection.addBook(bookTitle);
         String returnedTitle = bookCollection.getBookTitle(index);
 
-        assertEquals(bookTitle, returnedTitle);
+        assertEquals(bookTitles[index], returnedTitle);
 
     }
 
     @Test
-    public void removeBook_reducesListSize() {
+    public void when_removeBook_then_sizeDecreasesByOne() {
         String bookToRemove = "Macbeth";
 
         bookCollection.addBooks(bookTitles);
         bookCollection.removeBook(bookToRemove);
 
-        assertEquals(bookTitles.length - 1, bookList.size());
+        assertEquals(bookTitles.length - 1, bookCollection.size());
+    }
+
+    private void assertListIsSortedAlphabetically() {
+        int titleComparison = 1;
+        for (int i = 1; i < bookCollection.size() && titleComparison > 0; i++) {
+            titleComparison = bookCollection.get(i).getTitle().compareTo(
+                    bookCollection.get(i - 1).getTitle());
+        }
+        assertTrue(titleComparison > 0);
     }
 
     @Test
-    public void bookCollection_isSorted_afterAddingBook() {
+    public void when_addBookAndSort_then_listIsSorted() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitle);
         bookCollection.sortBooks();
 
-        int titleComparison = 1;
-        for (int i = 1; i < bookList.size() && titleComparison > 0; i++) {
-            titleComparison = bookList.get(i).getTitle().compareTo(
-                    bookList.get(i - 1).getTitle());
-        }
-
-        assertTrue(titleComparison > 0);
+        assertListIsSortedAlphabetically();
 
     }
 
     @Test
-    public void bookCollection_isSorted_afterRemovingBook() {
+    public void when_removeBookAndSort_then_listIsSorted() {
         String bookToRemove = "Macbeth";
         bookCollection.addBooks(bookTitles);
         bookCollection.removeBook(bookToRemove);
         bookCollection.sortBooks();
 
-        int titleComparison = 1;
-        for (int i = 1; i < bookList.size() && titleComparison > 0; i++) {
-            titleComparison = bookList.get(i).getTitle().compareTo(
-                    bookList.get(i - 1).getTitle());
-        }
-
-        assertTrue(titleComparison > 0);
+        assertListIsSortedAlphabetically();
 
     }
 

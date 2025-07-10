@@ -16,11 +16,11 @@ public class Book {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Book book)) return false;
-        return Objects.equals(getTitle(), book.getTitle());
+        return getTitle().equalsIgnoreCase(book.getTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getTitle());
+        return Objects.hashCode(getTitle().toLowerCase());
     }
 }
