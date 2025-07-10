@@ -12,10 +12,13 @@ public class BookCollectionManagerTest {
 
     private BookCollectionManager bookCollectionManager;
     private final String[] bookTitles = new String[] {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
+    private List<Book> bookCollection;
+
 
     @BeforeEach
     void setUp() {
         bookCollectionManager = new BookCollectionManager();
+        bookCollection = bookCollectionManager.getBookCollection();
     }
 
     @Test
@@ -29,7 +32,6 @@ public class BookCollectionManagerTest {
         int expectedSize = 1;
 
         bookCollectionManager.addBook(bookTitle);
-        List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
         assertEquals(1, (bookCollection.size()));
     }
@@ -37,7 +39,6 @@ public class BookCollectionManagerTest {
     @Test
     public void addBooks_correctSize() {
         bookCollectionManager.addBooks(bookTitles);
-        List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
         assertEquals(bookTitles.length, bookCollection.size());
     }
@@ -49,7 +50,6 @@ public class BookCollectionManagerTest {
 
         bookCollectionManager.addBooks(bookTitles);
         bookCollectionManager.addBook(bookTitle, index);
-        List<Book> bookCollection = bookCollectionManager.getBookCollection();
 
         assertEquals(index, bookCollection.indexOf(new Book(bookTitle)));
     }
@@ -57,7 +57,10 @@ public class BookCollectionManagerTest {
 
     @Test
     public void addBook_duplicatesNotAllowed() {
+        bookCollectionManager.addBooks(bookTitles);
+        bookCollectionManager.addBook(bookTitles[1]);
 
+        assertEquals(bookTitles.length, bookCollection.size());
     }
 
 }
