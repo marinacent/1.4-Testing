@@ -11,14 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class BookCollectionManagerTest {
 
     private BookCollectionManager bookCollectionManager;
-    private final String[] bookTitles = new String[] {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
     private List<Book> bookCollection;
+    private BookCollectionManager populatedBookCollectionManager;
+    private List<Book> populatedBookCollection;
+    private final String[] bookTitles = new String[] {"The mysteries of Udolpho", "Northanger Abbey", "Macbeth"};
 
 
     @BeforeEach
     void setUp() {
         bookCollectionManager = new BookCollectionManager();
         bookCollection = bookCollectionManager.getBookCollection();
+
+        populatedBookCollectionManager = new BookCollectionManager();
+        populatedBookCollectionManager.addBooks(bookTitles);
+        populatedBookCollection = populatedBookCollectionManager.getBookCollection();
+
     }
 
     @Test
@@ -48,19 +55,23 @@ public class BookCollectionManagerTest {
         String bookTitle = "Hamlet";
         int index = 2;
 
-        bookCollectionManager.addBooks(bookTitles);
-        bookCollectionManager.addBook(bookTitle, index);
+        populatedBookCollectionManager.addBook(bookTitle, index);
 
-        assertEquals(index, bookCollection.indexOf(new Book(bookTitle)));
+        assertEquals(index, populatedBookCollection.indexOf(new Book(bookTitle)));
     }
 
 
     @Test
     public void addBook_duplicatesNotAllowed() {
-        bookCollectionManager.addBooks(bookTitles);
-        bookCollectionManager.addBook(bookTitles[1]);
+        populatedBookCollectionManager.addBook(bookTitles[1]);
 
-        assertEquals(bookTitles.length, bookCollection.size());
+        assertEquals(bookTitles.length, populatedBookCollection.size());
+    }
+
+    @Test
+    public void getBookTitle_returnsCorrectTitle_GivenIndex() {
+
+
     }
 
 }
