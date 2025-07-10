@@ -1,10 +1,13 @@
 package exercise_1;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BookCollectionManager {
     private final List<Book> bookCollection;
+    private final Set<Book> bookCollectionSet;
 
     public BookCollectionManager() {
         this.bookCollection = new ArrayList<Book>();
@@ -16,12 +19,16 @@ public class BookCollectionManager {
 
     public void addBook(String bookTitle) {
         Book book = new Book(bookTitle);
-        bookCollection.add(book);
+        if (!bookCollection.contains(book)) {
+            bookCollection.add(book);
+        }
     }
 
     public void addBook(String bookTitle, int index) {
         Book book = new Book(bookTitle);
-        bookCollection.add(index, book);
+        if (!bookCollection.contains(book)) {
+            bookCollection.add(index, book);
+        }
     }
 
     public String getBookTitle(int index) {
