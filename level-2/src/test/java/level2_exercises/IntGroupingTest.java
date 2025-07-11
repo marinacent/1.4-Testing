@@ -9,10 +9,10 @@ import static org.assertj.core.api.Assertions.*;
 public class IntGroupingTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {-34, 0, 22})
+    @ValueSource(ints = {-34, 0, 3, 4, 22})
     void when_instantiating_then_EqualAndNotEqualNumbersCreated(int baseNumber) {
         IntGrouping testGrouping = new IntGrouping(baseNumber);
         assertThat(testGrouping.getBaseNumber()).isEqualTo(testGrouping.getDuplicate())
-                .isNotEqualTo(testGrouping.getDifferentNumber);
+                .isNotEqualTo(testGrouping.getDifferentNumber());
     }
 }

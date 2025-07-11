@@ -1,6 +1,29 @@
 package level2_exercises;
 
 public class IntGrouping {
+    private final int baseNumber;
+    private final int duplicate;
+    private final int differentNumber;
 
+    public IntGrouping(int baseNumber) {
+        this.baseNumber = baseNumber;
+        this.duplicate = baseNumber;
+        if (baseNumber == 3) {
+            this.differentNumber = 4;
+        } else {
+            this.differentNumber = 3;
+        }
+    }
 
+    public int getBaseNumber() {
+        return baseNumber;
+    }
+
+    public int getDuplicate() {
+        return duplicate;
+    }
+
+    public int getDifferentNumber() {
+        return differentNumber;
+    }
 }
