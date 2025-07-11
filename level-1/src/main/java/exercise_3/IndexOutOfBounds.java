@@ -1,0 +1,11 @@
+package exercise_3;
+
+public class IndexOutOfBounds {
+
+    public static char getCharbyIndex(char[] charArray, int index) {
+        if (index < 0 || index >= charArray.length) {
+            throw new ArrayIndexOutOfBoundsException("Invalid index");
+        }
+        return charArray[index];
+    }
+}
