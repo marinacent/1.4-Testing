@@ -3,8 +3,6 @@ package exercise_1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookCollectionTest {
@@ -107,6 +105,13 @@ public class BookCollectionTest {
         bookCollection.removeBook(bookToRemove);
 
         assertEquals(bookTitles.length - 1, bookCollection.size());
+    }
+
+    @Test
+    void when_removeNonExistingBook_then_sizeDoesNotChange() {
+        bookCollection.addBooks(bookTitles);
+        bookCollection.removeBook("Nonexistent Book");
+        assertEquals(bookTitles.length, bookCollection.size());
     }
 
     private void assertListIsSortedAlphabetically() {
