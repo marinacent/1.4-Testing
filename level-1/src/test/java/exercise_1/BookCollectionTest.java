@@ -19,12 +19,12 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_instantiated_then_bookCollectionIsNotNull() {
+    void when_instantiated_then_bookCollectionIsNotNull() {
         assertNotNull(bookCollection);
     }
 
     @Test
-    public void when_addBookWithoutIndex_then_sizeIncreasesByOne() {
+    void when_addBookWithoutIndex_then_sizeIncreasesByOne() {
         int expectedSize = 1;
 
         bookCollection.addBook(bookTitle);
@@ -33,7 +33,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_addBookWithIndex_then_sizeIncreasesByOne() {
+    void when_addBookWithIndex_then_sizeIncreasesByOne() {
         int expectedSize = 1;
 
         bookCollection.addBook(bookTitle, 0);
@@ -42,27 +42,27 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_addBooksArray_then_sizeIncreaseMatchesArrayLength() {
+    void when_addBooksArray_then_sizeIncreaseMatchesArrayLength() {
         bookCollection.addBooks(bookTitles);
 
         assertEquals(bookTitles.length, bookCollection.size());
     }
 
     @Test
-    public void when_addBookWithoutIndex_then_bookIsInList() {
+    void when_addBookWithoutIndex_then_bookIsInList() {
         bookCollection.addBook(bookTitle);
         assertTrue(bookCollection.containsBook(bookTitle));
     }
 
     @Test
-    public void when_addBookWithIndex_then_bookIsInList() {
+    void when_addBookWithIndex_then_bookIsInList() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitle, 2);
         assertTrue(bookCollection.containsBook(bookTitle));
     }
 
     @Test
-    public void when_addBooksArray_then_eachBookIsInList() {
+    void when_addBooksArray_then_eachBookIsInList() {
         bookCollection.addBooks(bookTitles);
         for (String title : bookTitles) {
             assertTrue(bookCollection.containsBook(title));
@@ -70,7 +70,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_addBookWithIndex_then_bookIsInsertedAtCorrectPosition() {
+    void when_addBookWithIndex_then_bookIsInsertedAtCorrectPosition() {
         int index = 0;
 
         bookCollection.addBooks(bookTitles);
@@ -81,7 +81,7 @@ public class BookCollectionTest {
 
 
     @Test
-    public void when_addDuplicateBook_then_duplicateIsNotAdded() {
+    void when_addDuplicateBook_then_duplicateIsNotAdded() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitles[1]);
 
@@ -89,7 +89,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_getBookTitleByIndex_then_correctTitleIsReturned() {
+    void when_getBookTitleByIndex_then_correctTitleIsReturned() {
         int index = 0;
 
         bookCollection.addBooks(bookTitles);
@@ -100,7 +100,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_removeBook_then_sizeDecreasesByOne() {
+    void when_removeBook_then_sizeDecreasesByOne() {
         String bookToRemove = "Macbeth";
 
         bookCollection.addBooks(bookTitles);
@@ -119,7 +119,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_addBookAndSort_then_listIsSorted() {
+    void when_addBookAndSort_then_listIsSorted() {
         bookCollection.addBooks(bookTitles);
         bookCollection.addBook(bookTitle);
         bookCollection.sortBooks();
@@ -129,7 +129,7 @@ public class BookCollectionTest {
     }
 
     @Test
-    public void when_removeBookAndSort_then_listIsSorted() {
+    void when_removeBookAndSort_then_listIsSorted() {
         String bookToRemove = "Macbeth";
         bookCollection.addBooks(bookTitles);
         bookCollection.removeBook(bookToRemove);
