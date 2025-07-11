@@ -5,9 +5,9 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class ComputeDni {
-    private int number;
-    private char letter;
-    private String dni;
+    private final int number;
+    private final char letter;
+    private final String dni;
     private static final Map<Integer, Character> REMAINDER_TO_LETTER = Map.ofEntries(
             entry(0, 'T'), entry(1, 'R'), entry(2, 'W'),
             entry(3, 'A'), entry(4, 'G'), entry(5, 'M'),
