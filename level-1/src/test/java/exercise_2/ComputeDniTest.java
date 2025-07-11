@@ -23,8 +23,9 @@ public class ComputeDniTest {
     })
     void when_givenDniNumber_then_computeCorrectLetter(String number, String letter) {
         int intNumber = Integer.parseInt(number);
-        String returnedLetter = String.valueOf(ComputeDni.computeLetter(intNumber));
-        assertEquals(letter, returnedLetter);
+        char expectedLetter = letter.trim().charAt(0);
+        char actualLetter = ComputeDni.computeLetter(intNumber);
+        assertEquals(expectedLetter, actualLetter);
     }
 
 }
