@@ -5,9 +5,6 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class ComputeDni {
-    private final int number;
-    private final char letter;
-    private final String dni;
     private static final Map<Integer, Character> REMAINDER_TO_LETTER = Map.ofEntries(
             entry(0, 'T'), entry(1, 'R'), entry(2, 'W'),
             entry(3, 'A'), entry(4, 'G'), entry(5, 'M'),
@@ -20,13 +17,10 @@ public class ComputeDni {
 
     );
 
-    public ComputeDni(int number) {
-        this.number = number;
-        this.letter = computeLetter(number);
-        this.dni = "" + this.number + this.letter;
-    }
-
     public static char computeLetter(int number) {
+        if (number < 1 || number >= 100000000) {
+            throw new IllegalArgumentException("DNI number must be between 1 and 99999999");
+        }
         int remainder = number % 23;
         return REMAINDER_TO_LETTER.get(remainder);
     }
