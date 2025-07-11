@@ -53,7 +53,7 @@ public class BookCollection {
     }
 
     public boolean containsBook(String title) {
-        return bookList.contains(new Book(title));
+        return bookSet.contains(new Book(title));
     }
 
     public int indexOf(String title) {

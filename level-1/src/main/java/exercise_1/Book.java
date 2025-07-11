@@ -9,7 +9,7 @@ public class Book {
         if (title == null) {
             throw new IllegalArgumentException("Title cannot be null");
         }
-        
+
         this.title = title;
     }
 
