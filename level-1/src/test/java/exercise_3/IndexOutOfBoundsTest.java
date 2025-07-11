@@ -1,6 +1,5 @@
 package exercise_3;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,7 +12,7 @@ public class IndexOutOfBoundsTest {
     void when_invalidIndex_then_throwArrayIndexOutOfBoundsException(int index) {
         char[] testArray = {'a', 'b', 'c', 'd'};
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            IndexOutOfBounds.getCharbyIndex(testArray, index);
+            IndexOutOfBounds.getCharByIndex(testArray, index);
         });
     }
 }
