@@ -6,6 +6,10 @@ public class Book {
     private final String title;
 
     public Book(String title) {
+        if (title == null) {
+            throw new IllegalArgumentException("Title cannot be null");
+        }
+        
         this.title = title;
     }
 
