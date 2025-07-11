@@ -26,7 +26,7 @@ public class BookCollection {
         }
     }
 
-    public void addBooks(String[] bookTitles) {
+    public void addBooks(String... bookTitles) {
         for (String title : bookTitles) {
             addBook(title);
         }
