@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StringMap {
-    private Map<String,String> map;
+    private final Map<String,String> map;
 
     public StringMap() {
         this.map = new HashMap<>();

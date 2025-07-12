@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class IntGroupingTest {
 
@@ -37,5 +38,25 @@ public class IntGroupingTest {
         int baseNumber = 2;
         IntGrouping testGrouping = new IntGrouping(baseNumber);
         assertThat(testGrouping.getNumberArray()).isEqualTo(testGrouping.getDuplicateArray());
+    }
+
+    @Test
+    void when_NegativeIndexInGetNumber_then_throwException() {
+        int baseNumber = 2;
+        IntGrouping testGrouping = new IntGrouping(baseNumber);
+        assertThatThrownBy(() -> {
+            testGrouping.getNumber(-3);
+        }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
+
+    }
+
+    @Test
+    void when_IndexTooLargeInGetNumber_then_throwException() {
+        int baseNumber = 2;
+        IntGrouping testGrouping = new IntGrouping(baseNumber);
+        int large_index = testGrouping.getNumberArray().length + 20;
+        assertThatThrownBy(() -> {
+            testGrouping.getNumber(large_index);
+        }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
     }
 }
