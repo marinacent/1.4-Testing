@@ -26,4 +26,12 @@ public class IntGrouping {
     public int getDifferentNumber() {
         return differentNumber;
     }
+
+    public IntGrouping createDuplicateGrouping() {
+        return this;
+    }
+
+    public IntGrouping createCopy() {
+        return new IntGrouping(baseNumber);
+    }
 }
