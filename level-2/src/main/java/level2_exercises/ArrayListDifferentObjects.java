@@ -11,7 +11,7 @@ public class ArrayListDifferentObjects {
     }
 
     public List<Object> getObjectList() {
-        return objectList;
+        return new ArrayList<>(objectList);
     }
 
     public void addObjects(Object... objects) {
