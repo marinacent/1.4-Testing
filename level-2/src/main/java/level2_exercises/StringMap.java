@@ -1,5 +1,6 @@
 package level2_exercises;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ public class StringMap {
     }
 
     public Map<String, String> getMap() {
-        return map;
+        return Collections.unmodifiableMap(map);
     }
 
     public void addElement(String key, String value) {
