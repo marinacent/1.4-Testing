@@ -32,11 +32,11 @@ public class IntGrouping {
     }
 
     public int[] getNumberArray() {
-        return numberArray;
+        return java.util.Arrays.copyOf(numberArray, numberArray.length);
     }
 
     public int[] getDuplicateArray() {
-        return duplicateArray;
+        return java.util.Arrays.copyOf(duplicateArray, duplicateArray.length);
     }
 
     public int getNumber(int index) {
