@@ -15,4 +15,20 @@ public class IntGroupingTest {
         assertThat(testGrouping.getBaseNumber()).isEqualTo(testGrouping.getDuplicate())
                 .isNotEqualTo(testGrouping.getDifferentNumber());
     }
+
+    @Test
+    void when_creatingDuplicateIntGrouping_then_duplicateHasTheSameReference() {
+        int baseNumber = 2;
+        IntGrouping testGrouping = new IntGrouping(baseNumber);
+        IntGrouping duplicateGrouping = testGrouping.createDuplicateGrouping();
+        assertThat(duplicateGrouping).isEqualTo(testGrouping);
+    }
+
+    @Test
+    void when_creatingGroupingCopy_then_copyHasDifferentReference() {
+        int baseNumber = 2;
+        IntGrouping testGrouping = new IntGrouping(baseNumber);
+        IntGrouping copyGrouping = testGrouping.createCopy();
+        assertThat(copyGrouping).isNotEqualTo(testGrouping);
+    }
 }
