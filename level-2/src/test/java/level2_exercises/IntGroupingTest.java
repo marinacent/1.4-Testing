@@ -31,4 +31,11 @@ public class IntGroupingTest {
         IntGrouping copyGrouping = testGrouping.createCopy();
         assertThat(copyGrouping).isNotEqualTo(testGrouping);
     }
+
+    @Test
+    void when_instantiating_then_EqualArraysCreated() {
+        int baseNumber = 2;
+        IntGrouping testGrouping = new IntGrouping(baseNumber);
+        assertThat(testGrouping.getNumberArray()).isEqualTo(testGrouping.getDuplicateArray());
+    }
 }
