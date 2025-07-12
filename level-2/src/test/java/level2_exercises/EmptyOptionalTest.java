@@ -12,6 +12,5 @@ public class EmptyOptionalTest {
     void when_getEmptyOptional_then_emptyOptionalReturned() {
         Optional optional = EmptyOptional.getEmptyOptional();
         assertThat(optional).isEmpty();
-
     }
 }
