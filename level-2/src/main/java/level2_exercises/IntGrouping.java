@@ -39,6 +39,13 @@ public class IntGrouping {
         return duplicateArray;
     }
 
+    public int getNumber(int index) {
+        if (index < 0 || index > 2) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+        return numberArray[index];
+    }
+
     public IntGrouping createDuplicateGrouping() {
         return this;
     }

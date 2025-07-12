@@ -44,8 +44,9 @@ public class IntGroupingTest {
     void when_NegativeIndexInGetNumber_then_throwException() {
         int baseNumber = 2;
         IntGrouping testGrouping = new IntGrouping(baseNumber);
+        int negativeIndex = -3;
         assertThatThrownBy(() -> {
-            testGrouping.getNumber(-3);
+            testGrouping.getNumber(negativeIndex);
         }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
 
     }
@@ -54,9 +55,9 @@ public class IntGroupingTest {
     void when_IndexTooLargeInGetNumber_then_throwException() {
         int baseNumber = 2;
         IntGrouping testGrouping = new IntGrouping(baseNumber);
-        int large_index = testGrouping.getNumberArray().length + 20;
+        int largeIndex = 3;
         assertThatThrownBy(() -> {
-            testGrouping.getNumber(large_index);
+            testGrouping.getNumber(largeIndex);
         }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
     }
 }
