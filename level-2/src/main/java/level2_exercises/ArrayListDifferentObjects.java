@@ -1,6 +1,7 @@
 package level2_exercises;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayListDifferentObjects {
@@ -15,8 +16,6 @@ public class ArrayListDifferentObjects {
     }
 
     public void addObjects(Object... objects) {
-        for (Object object : objects) {
-            objectList.add(object);
-        }
+        Collections.addAll(objectList, objects);
     }
 }

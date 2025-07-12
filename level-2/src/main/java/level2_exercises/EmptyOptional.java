@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public class EmptyOptional {
 
-    public static Optional getEmptyOptional() {
+    public static Optional<String> getEmptyOptional() {
         return Optional.empty();
     }
 }

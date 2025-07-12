@@ -10,7 +10,7 @@ public class EmptyOptionalTest {
 
     @Test
     void when_getEmptyOptional_then_emptyOptionalReturned() {
-        Optional optional = EmptyOptional.getEmptyOptional();
+        Optional<String> optional = EmptyOptional.getEmptyOptional();
         assertThat(optional).isEmpty();
     }
 }
