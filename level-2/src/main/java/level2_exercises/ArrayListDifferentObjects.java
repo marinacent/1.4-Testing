@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayListDifferentObjects {
-    private final List<Object> list;
+    private final List<Object> Objectlist;
 
     public ArrayListDifferentObjects() {
-        this.list = new ArrayList<>();
+        this.Objectlist = new ArrayList<>();
     }
 
-    public List<Object> getList() {
-        return list;
+    public List<Object> getObjectlist() {
+        return Objectlist;
     }
 
     public void addObjects(Object... objects) {
         for (Object object : objects) {
-            list.add(object);
+            Objectlist.add(object);
         }
     }
 }
