@@ -4,6 +4,8 @@ public class IntGrouping {
     private final int baseNumber;
     private final int duplicate;
     private final int differentNumber;
+    private final int[] numberArray;
+    private final int[] duplicateArray;
 
     public IntGrouping(int baseNumber) {
         this.baseNumber = baseNumber;
@@ -13,6 +15,8 @@ public class IntGrouping {
         } else {
             this.differentNumber = 3;
         }
+        this.numberArray = new int[]{baseNumber, duplicate, differentNumber};
+        this.duplicateArray = numberArray;
     }
 
     public int getBaseNumber() {
@@ -25,6 +29,14 @@ public class IntGrouping {
 
     public int getDifferentNumber() {
         return differentNumber;
+    }
+
+    public int[] getNumberArray() {
+        return numberArray;
+    }
+
+    public int[] getDuplicateArray() {
+        return duplicateArray;
     }
 
     public IntGrouping createDuplicateGrouping() {
