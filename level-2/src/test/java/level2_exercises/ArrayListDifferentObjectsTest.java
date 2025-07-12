@@ -32,6 +32,6 @@ public class ArrayListDifferentObjectsTest {
 
     @Test
     void when_addingObjectsToList_then_objectAddedOnlyOnce() {
-        assertThat(list.getList()).containsOnlyOnce(testArray);
+        assertThat(list.getList()).containsOnlyOnce(testString);
     }
 }
