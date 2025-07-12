@@ -22,7 +22,7 @@ public class IntGroupingTest {
         int baseNumber = 2;
         IntGrouping testGrouping = new IntGrouping(baseNumber);
         IntGrouping duplicateGrouping = testGrouping.createDuplicateGrouping();
-        assertThat(duplicateGrouping).isEqualTo(testGrouping);
+        assertThat(duplicateGrouping).isSameAs(testGrouping);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class IntGroupingTest {
         int baseNumber = 2;
         IntGrouping testGrouping = new IntGrouping(baseNumber);
         IntGrouping copyGrouping = testGrouping.createCopy();
-        assertThat(copyGrouping).isNotEqualTo(testGrouping);
+        assertThat(copyGrouping).isNotSameAs(testGrouping);
     }
 
     @Test
