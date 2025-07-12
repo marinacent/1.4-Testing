@@ -7,7 +7,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArrayListDifferentObjectsTest {
 
     @Test
-    void when_addingObjectsToArrayList_then_objectsInInsertionOrder() {
+    void when_addingObjectsToList_then_ListContainsObjects() {
+        ArrayListDifferentObjects list = new ArrayListDifferentObjects();
+        String testString = "a test String";
+        IntGrouping testIntGrouping = new IntGrouping(0);
+        int[] testArray = new int[]{1, 2, 3};
+        Character testCharacter = 'a';
+        list.addObjects(testString, testIntGrouping);
+        list.addObjects(testArray, testCharacter);
+        assertThat(list.getList()).contains(testString, testIntGrouping, testArray, testCharacter);
+    }
+
+    @Test
+    void when_addingObjectsToList_then_objectsInInsertionOrder() {
         ArrayListDifferentObjects list = new ArrayListDifferentObjects();
         String testString = "a test String";
         IntGrouping testIntGrouping = new IntGrouping(0);
