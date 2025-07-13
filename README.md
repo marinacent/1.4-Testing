@@ -58,6 +58,7 @@ Create Java classes and/or tests to demonstrate the following:
 ## 💻 Technologies used
 
 Java 21
+
 Maven
 
 ## 📋 Requirements
