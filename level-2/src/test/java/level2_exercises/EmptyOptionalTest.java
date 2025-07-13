@@ -9,8 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EmptyOptionalTest {
 
     @Test
-    void when_getEmptyOptional_then_emptyOptionalReturned() {
-        Optional<String> optional = EmptyOptional.getEmptyOptional();
+    void when_creatingEmptyOptional_then_emptyOptionalCreated() {
+        Optional<String> optional = Optional.empty();
         assertThat(optional).isEmpty();
     }
 }
