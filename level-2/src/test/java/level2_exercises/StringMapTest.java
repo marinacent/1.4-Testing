@@ -13,7 +13,7 @@ public class StringMapTest {
     void when_addingElementToMap_then_keyInMap () {
         Map<String,String> stringMap = new HashMap<>();
         stringMap.put("key", "value");
-        assertThat(stringMap.keySet()).contains("key"));
+        assertThat(stringMap.keySet()).contains("key");
     }
 
 }

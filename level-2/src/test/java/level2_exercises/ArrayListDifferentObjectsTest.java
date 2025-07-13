@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArrayListDifferentObjectsTest {
     private List<Object> list;
     private final String testString = "a test String";
-    private final IntGrouping testIntGrouping = new IntGrouping(0);
+    private final Person testPerson = new Person("Catherine Tilney", 31, "green");
     private final int[] testArray = new int[]{1, 2, 3};
     private final Character testCharacter = 'a';
 
@@ -19,7 +19,7 @@ public class ArrayListDifferentObjectsTest {
     void setUp() {
         list = new ArrayList<>();
         list.add(testString);
-        list.add(testIntGrouping);
+        list.add(testPerson);
         list.add(testArray);
     }
 
@@ -27,13 +27,13 @@ public class ArrayListDifferentObjectsTest {
     @Test
     void when_addingObjectsToList_then_ListContainsObjects() {
         list.add(testCharacter);
-        assertThat(list).contains(testString, testIntGrouping, testArray, testCharacter);
+        assertThat(list).contains(testString, testArray, testPerson, testCharacter);
     }
 
     @Test
     void when_addingObjectsToList_then_objectsInInsertionOrder() {
         list.add(testCharacter);
-        assertThat(list).containsExactly(testString, testIntGrouping, testArray, testCharacter);
+        assertThat(list).containsExactly(testString, testPerson, testArray, testCharacter);
     }
 
     @Test
