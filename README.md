@@ -59,11 +59,13 @@ Create Java classes and/or tests to demonstrate the following:
 
 Java 21
 
-Maven
+Maven 4.0.0
 
 ## 📋 Requirements
 
 Java 21
+
+Maven 4.0.0
 
 ## 🛠️ Set up
 
