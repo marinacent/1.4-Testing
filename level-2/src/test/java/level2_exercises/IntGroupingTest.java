@@ -65,3 +65,4 @@ public class IntGroupingTest {
         }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
 
     }
+}
