@@ -14,4 +14,5 @@ public class StringMapTest {
         testMap.addElement(key, value);
         assertThat(testMap.getMap().keySet()).contains(key);
     }
+
 }

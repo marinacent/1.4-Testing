@@ -3,10 +3,13 @@ package level2_exercises;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ArrayListDifferentObjectsTest {
-    private ArrayListDifferentObjects list;
+    private List<Object> list;
     private final String testString = "a test String";
     private final IntGrouping testIntGrouping = new IntGrouping(0);
     private final int[] testArray = new int[]{1, 2, 3};
@@ -14,35 +17,33 @@ public class ArrayListDifferentObjectsTest {
 
     @BeforeEach
     void setUp() {
-        list = new ArrayListDifferentObjects();
+        list = new ArrayList<>();
+        list.add(testString);
+        list.add(testIntGrouping);
+        list.add(testArray);
     }
 
 
     @Test
     void when_addingObjectsToList_then_ListContainsObjects() {
-        list.addObjects(testString, testIntGrouping);
-        list.addObjects(testArray, testCharacter);
-        assertThat(list.getObjectList()).contains(testString, testIntGrouping, testArray, testCharacter);
+        list.add(testCharacter);
+        assertThat(list).contains(testString, testIntGrouping, testArray, testCharacter);
     }
 
     @Test
     void when_addingObjectsToList_then_objectsInInsertionOrder() {
-        list.addObjects(testString, testIntGrouping);
-        list.addObjects(testArray, testCharacter);
-        assertThat(list.getObjectList()).containsExactly(testString, testIntGrouping, testArray, testCharacter);
+        list.add(testCharacter);
+        assertThat(list).containsExactly(testString, testIntGrouping, testArray, testCharacter);
     }
 
     @Test
     void when_addingObjectsToList_then_objectAddedOnlyOnce() {
-        list.addObjects(testString, testIntGrouping);
-        list.addObjects(testArray, testCharacter);
-        assertThat(list.getObjectList()).containsOnlyOnce(testString);
+        list.add(testCharacter);
+        assertThat(list).containsOnlyOnce(testString);
     }
 
     @Test
     void when_objectNotAdded_then_objectNotInList() {
-        list.addObjects(testString, testIntGrouping);
-        list.addObjects(testArray);
-        assertThat(list.getObjectList()).doesNotContain(testCharacter);
+        assertThat(list).doesNotContain(testCharacter);
     }
 }
