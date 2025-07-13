@@ -9,55 +9,59 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class IntGroupingTest {
 
-    @ParameterizedTest
-    @ValueSource(ints = {-34, 0, 3, 4, 22})
-    void when_instantiating_then_EqualAndNotEqualNumbersCreated(int baseNumber) {
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        assertThat(testGrouping.getBaseNumber()).isEqualTo(testGrouping.getDuplicate())
-                .isNotEqualTo(testGrouping.getDifferentNumber());
+    @Test
+    void when_twoIntsWithSameValue_then_IntsAreEqual() {
+        int a = 1;
+        int b = 1;
+        assertThat(a).isEqualTo(b);
     }
 
     @Test
-    void when_creatingDuplicateIntGrouping_then_duplicateHasTheSameReference() {
-        int baseNumber = 2;
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        IntGrouping duplicateGrouping = testGrouping.createDuplicateGrouping();
-        assertThat(duplicateGrouping).isSameAs(testGrouping);
+    void when_twoIntsWithDifferentValue_then_IntsAreNotEqual() {
+        int a = 1;
+        int b = 2;
+        assertThat(a).isNotEqualTo(b);
     }
 
     @Test
-    void when_creatingGroupingCopy_then_copyHasDifferentReference() {
-        int baseNumber = 2;
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        IntGrouping copyGrouping = testGrouping.createCopy();
-        assertThat(copyGrouping).isNotSameAs(testGrouping);
+    void when_assigningObjectToAnotherObject_then_objectsHaveTheSameReference() {
+        Person sophia = new Person("Sophia Garcia", 51, "black");
+        Person garcia = sophia;
+        assertThat(sophia).isSameAs(garcia);
     }
 
     @Test
-    void when_instantiating_then_EqualArraysCreated() {
-        int baseNumber = 2;
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        assertThat(testGrouping.getNumberArray()).isEqualTo(testGrouping.getDuplicateArray());
+    void when_creatingTwoObjects_then_objectsHaveDifferentReference() {
+        Person sophia = new Person("Sophia Garcia", 51, "black");
+        Person garcia = new Person("Sophia Garcia", 51, "black");
+        assertThat(sophia).isNotSameAs(garcia);
     }
 
     @Test
-    void when_NegativeIndexInGetNumber_then_throwException() {
-        int baseNumber = 2;
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        int negativeIndex = -3;
+    void when_intArraysWithSameValues_then_intArraysAreEqual() {
+        int[] originalArray = {1, 2, 3, 4};
+        int[] copyArray = {1, 2, 3, 4};
+        assertThat(originalArray).isEqualTo(copyArray);
+    }
+
+    @Test
+    void when_negativeIndex_then_throwException() {
+        Person sophia = new Person("Sophia Garcia", 51, "black");
+        sophia.addFavoriteComposer("Glass");
+        sophia.addFavoriteComposer("Pärt");
         assertThatThrownBy(() -> {
-            testGrouping.getNumber(negativeIndex);
+            sophia.printFavoriteComposers(-3);
         }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
 
     }
 
     @Test
-    void when_IndexTooLargeInGetNumber_then_throwException() {
-        int baseNumber = 2;
-        IntGrouping testGrouping = new IntGrouping(baseNumber);
-        int largeIndex = 3;
+    void when_indexTooLarge_then_throwException() {
+        Person sophia = new Person("Sophia Garcia", 51, "black");
+        sophia.addFavoriteComposer("Glass");
+        sophia.addFavoriteComposer("Pärt");
         assertThatThrownBy(() -> {
-            testGrouping.getNumber(largeIndex);
+            sophia.printFavoriteComposers(3);
         }).isInstanceOf(ArrayIndexOutOfBoundsException.class);
+
     }
-}
